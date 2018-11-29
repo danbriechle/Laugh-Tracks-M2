@@ -45,7 +45,26 @@ RSpec.describe 'Comedian Show Page' do
        expect(page).to have_css("img[src='#{davesspecial.img}']")
        expect(page).to have_content(davesspecial.runtime)
      end
-   end
+    end
+
+   it 'shows a statistics area with avg age, avg runtime & unique cities list' do
+      dave = Comedian.create(name: 'dave', age: 40, city: "New York") #a comedian is a play list
+      dave.specials.create(name: "daves really funny", runtime: 20, img: "../../app/public/image/dave.png")
+
+      john = Comedian.create(name: 'john', age: 20, city: "Denver") #a comedian is a play list
+      john.specials.create(name: "john is not funny", runtime: 10, img: "../../app/public/image/john.png")
+
+      visit '/comedians'
+
+      save_and_open_page
+
+      within ".statistics" do
+        expect(page).to have_content("Average Age 30")
+        expect(page).to have_content("Average Runtime 15")
+        expect(page).to have_content("New York", "Denver")
+      end
+    end
+
 
  end
 end

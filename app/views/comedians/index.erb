@@ -1,15 +1,31 @@
-<% @comedians.each do |comedian| %>
-<ul id="comic-<%= comedian.id %>">
-  <li><%= comedian.name %></li>
-  <li>age - <%= comedian.age %></li>
-  <li>city - <%= comedian.city %></li>
+
+<section class="statistics">
+  <h1>Statistics</h1>
   <ul>
-    <a>Specials</a>
-    <% comedian.specials.each do |special| %>
-      <li> <%= special.name %> </li>
-      <img src=<%=special.img %> />
-      <li><%= special.runtime %> mins</li>
+    <li><%= "Average Age #{Comedian.average_age}" %></li>
+    <li><%= "Average Runtime #{Special.average_runtime}" %></li>
+  </ul>
+  <ul>
+    <h3>Cities</h3>
+      <% @comedians.each do |comedian| %>
+        <li><%=comedian.city%></li>
       <% end %>
   </ul>
-</ul>
-<%end%>
+  </section>
+  <section>
+  <% @comedians.each do |comedian| %>
+    <ul id="comic-<%= comedian.id %>">
+      <li><%= comedian.name %></li>
+      <li>age - <%= comedian.age %></li>
+      <li>city - <%= comedian.city %></li>
+      <ul>
+        <a>Specials</a>
+        <% comedian.specials.each do |special| %>
+          <li> <%= special.name %> </li>
+          <img src=<%=special.img %> />
+          <li><%= special.runtime %> mins</li>
+          <% end %>
+      </ul>
+    </ul>
+  <%end%>
+</section>
