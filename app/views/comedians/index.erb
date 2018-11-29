@@ -3,9 +3,13 @@
   <li><%= comedian.name %></li>
   <li>age - <%= comedian.age %></li>
   <li>city - <%= comedian.city %></li>
-  <a>Specials</a>
-  <% comedian.specials.each do |special| %>
-        <li> <%= special.name %>  </li>
-        <% end %>
+  <ul>
+    <a>Specials</a>
+    <% comedian.specials.each do |special| %>
+      <li> <%= special.name %> </li>
+      <img src=<%=special.img %> />
+      <li><%= special.runtime %> mins</li>
+      <% end %>
+  </ul>
 </ul>
 <%end%>

@@ -35,17 +35,17 @@ RSpec.describe 'Comedian Show Page' do
       end
     end
 
-   #  xit 'shows a comedians specials run time length and thumbnail image'
-   #   dave = Comedian.create(name: 'dave', age: 40, city: "new york") #a comedian is a play list
-   #   dave.specials.create(name: "daves really funny")
-   #   ben = Comedian.create(name: 'ben', age: 27, city: "denver")
-   #   ben.specials.create(name: "bens really funny")
-   #
-   #   visit '/comedians'
-   #
-   #   within "#comic-#{ben.id}" do
-   #     expect(page).to have_css("img[src*='#{dave.specials.img}']") #this is wrong
-   #   end
-   # end
+    it 'shows a comedians specials run time length and thumbnail image' do
+     dave = Comedian.create(name: 'dave', age: 40, city: "new york") #a comedian is a play list
+     davesspecial = dave.specials.create(name: "daves really funny", runtime: 12, img: "../../app/public/image/dave.png")
+
+     visit '/comedians'
+
+     within "#comic-#{dave.id}" do
+       expect(page).to have_css("img[src='#{davesspecial.img}']")
+       expect(page).to have_content(davesspecial.runtime)
+     end
+   end
+
  end
 end
