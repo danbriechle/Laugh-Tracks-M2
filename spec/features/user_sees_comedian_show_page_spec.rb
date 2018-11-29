@@ -19,23 +19,33 @@ RSpec.describe 'Comedian Show Page' do
     end
 
     it 'shows comedian list with specials names' do
-     daves_special = Special.create(name: "daves really funny")
-     dave = Comedian.create(name: 'dave', age: 40, city: "new york")
-     daves_special.comedians << Comedian.find_by(name: "dave")
-
-     bens_special = Special.create(name: "bens really funny")
-     dave = Comedian.create(name: 'ben', age: 27, city: "denver")
-     bens_special.comedians << Comedian.find_by(name: "ben")
+     dave = Comedian.create(name: 'dave', age: 40, city: "new york") #a comedian is a play list
+     dave.specials.create(name: "daves really funny")
+     ben = Comedian.create(name: 'ben', age: 27, city: "denver")
+     ben.specials.create(name: "bens really funny")
 
       visit '/comedians'
-      
+
       within "#comic-#{ben.id}" do
-        expect(page).to have_content(ben.specials)
+        expect(page).to have_content("bens really funny")
       end
 
       within "#comic-#{dave.id}" do
-        expect(page).to have_content(dave.specials)
+        expect(page).to have_content("daves really funny")
       end
     end
-  end
+
+   #  xit 'shows a comedians specials run time length and thumbnail image'
+   #   dave = Comedian.create(name: 'dave', age: 40, city: "new york") #a comedian is a play list
+   #   dave.specials.create(name: "daves really funny")
+   #   ben = Comedian.create(name: 'ben', age: 27, city: "denver")
+   #   ben.specials.create(name: "bens really funny")
+   #
+   #   visit '/comedians'
+   #
+   #   within "#comic-#{ben.id}" do
+   #     expect(page).to have_css("img[src*='#{dave.specials.img}']") #this is wrong
+   #   end
+   # end
+ end
 end

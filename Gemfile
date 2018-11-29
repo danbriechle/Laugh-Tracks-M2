@@ -14,4 +14,5 @@ group :development, :test do
   gem 'rspec'
   gem 'shotgun'
   gem 'tux'
+  gem 'pry'
 end

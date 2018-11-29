@@ -2,6 +2,10 @@
 <ul id="comic-<%= comedian.id %>">
   <li><%= comedian.name %></li>
   <li>age - <%= comedian.age %></li>
-  <li>city -<%= comedian.city %></li>
+  <li>city - <%= comedian.city %></li>
+  <a>Specials</a>
+  <% comedian.specials.each do |special| %>
+        <li> <%= special.name %>  </li>
+        <% end %>
 </ul>
 <%end%>

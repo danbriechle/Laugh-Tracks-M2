@@ -1,4 +1,4 @@
 class Special < ActiveRecord::Base
-  has_many :comedians
+  belongs_to :comedians
   validates :name, presence: true
 end
