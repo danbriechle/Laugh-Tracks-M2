@@ -4,6 +4,7 @@
   <ul>
     <li><%= "Average Age #{Comedian.average_age}" %></li>
     <li><%= "Average Runtime #{Special.average_runtime}" %></li>
+    <li><%= "Total Specials: #{Special.all.count}"%></li>
   </ul>
   <ul>
     <h3>Cities</h3>
@@ -25,7 +26,8 @@
           <img src=<%=special.img %> />
           <li><%= special.runtime %> mins</li>
           <% end %>
+          <li><%= "Total Specials: #{comedian.specials.count}"%></li>
       </ul>
     </ul>
-  <%end%>
+  <% end %>
 </section>

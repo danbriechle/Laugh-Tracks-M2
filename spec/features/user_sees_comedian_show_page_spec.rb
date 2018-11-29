@@ -47,7 +47,7 @@ RSpec.describe 'Comedian Show Page' do
      end
     end
 
-   it 'shows a statistics area with avg age, avg runtime & unique cities list' do
+    it 'shows a statistics area with avg age, avg runtime & unique cities list' do
       dave = Comedian.create(name: 'dave', age: 40, city: "New York") #a comedian is a play list
       dave.specials.create(name: "daves really funny", runtime: 20, img: "../../app/public/image/dave.png")
 
@@ -56,8 +56,6 @@ RSpec.describe 'Comedian Show Page' do
 
       visit '/comedians'
 
-      save_and_open_page
-
       within ".statistics" do
         expect(page).to have_content("Average Age 30")
         expect(page).to have_content("Average Runtime 15")
@@ -65,6 +63,33 @@ RSpec.describe 'Comedian Show Page' do
       end
     end
 
+    it 'can be querried for a list of all comedians by age' do
+      dave = Comedian.create(name: 'dave', age: 40, city: "new york")
+      ben = Comedian.create(name: 'ben', age: 27, city: "denver")
 
+      visit '/comedians?age=40'
+
+      expect(page).to have_content(dave.name)
+      expect(page).not_to have_content(ben.name)
+    end
+
+    it 'shows a count of all the specials in the stats section and each comedian has a total specials count'do
+    dave = Comedian.create(name: 'dave', age: 40, city: "New York")
+    dave.specials.create(name: "daves really funny", runtime: 20, img: "../../app/public/image/dave.png")
+
+    john = Comedian.create(name: 'john', age: 20, city: "Denver")
+    john.specials.create(name: "john is not funny", runtime: 10, img: "../../app/public/image/john.png")
+
+    visit '/comedians'
+
+      within "#comic-#{john.id}" do
+        expect(page).to have_content("Total Specials: 1")
+      end
+
+      within ".statistics" do
+        expect(page).to have_content("Total Specials: 2")
+      end
+
+    end
  end
 end
