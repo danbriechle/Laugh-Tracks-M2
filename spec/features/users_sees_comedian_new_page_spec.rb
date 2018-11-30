@@ -9,8 +9,7 @@ RSpec.describe 'Comedian New Page' do
       fill_in 'City', with: 'Jamestown'
 
       click_on 'Submit'
-      save_and_open_page
-
+      
       expect(page).to have_content('James')
       expect(page).to have_content(4)
       expect(page).to have_content('Jamestown')
