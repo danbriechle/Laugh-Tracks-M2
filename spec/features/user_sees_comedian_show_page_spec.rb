@@ -91,5 +91,24 @@ RSpec.describe 'Comedian Show Page' do
       end
 
     end
+
+    it 'recalculates averages based upon querry' do
+      dave = Comedian.create(name: 'dave', age: 40, city: "New York")
+      dave.specials.create(name: "daves really funny", runtime: 20, img: "../../app/public/image/dave.png")
+
+      john = Comedian.create(name: 'john', age: 20, city: "Denver")
+      john.specials.create(name: "john is not funny", runtime: 10, img: "../../app/public/image/john.png")
+
+      visit '/comedians?age=40'
+
+      save_and_open_page
+
+      within ".statistics" do
+          expect(page).to have_content("Average Age 40")
+          expect(page).to have_content("Average Runtime 20")
+          expect(page).to have_content("New York")
+        end
+
+      end
  end
 end

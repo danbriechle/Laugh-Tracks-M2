@@ -6,5 +6,5 @@ class Comedian < ActiveRecord::Base
   def self.average_age
     average(:age)
   end
-  
+
 end
