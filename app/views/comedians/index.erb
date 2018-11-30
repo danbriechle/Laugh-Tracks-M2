@@ -2,8 +2,8 @@
 <section class="statistics">
   <h1>Statistics</h1>
   <ul>
-    <li><%= "Average Age #{@average_age}" %></li>
-    <li><%= "Average Runtime #{@average_runtime}" %></li>
+    <li><%= "Average Age #{@average_age.to_f.round(2)}" %></li>
+    <li><%= "Average Runtime #{@average_runtime.to_f.round(2)}" %></li>
     <li><%= "Total Specials: #{@specials.count}"%></li>
   </ul>
   <ul>
