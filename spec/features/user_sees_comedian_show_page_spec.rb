@@ -101,8 +101,6 @@ RSpec.describe 'Comedian Show Page' do
 
       visit '/comedians?age=40'
 
-      save_and_open_page
-
       within ".statistics" do
           expect(page).to have_content("Average Age 40")
           expect(page).to have_content("Average Runtime 20")

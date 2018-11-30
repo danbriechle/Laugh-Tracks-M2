@@ -1,5 +1,3 @@
-
-require 'pry'
 class LaughTracksApp < Sinatra::Base
 
   get '/' do
@@ -20,6 +18,15 @@ class LaughTracksApp < Sinatra::Base
       @average_runtime = Special.average_runtime
     end
     erb :"comedians/index"
+  end
+
+  get '/comedians/new' do
+    erb :"comedians/new"
+  end
+
+  post '/comedians' do
+    Comedian.create!(params[:comedian])
+    redirect '/comedians'
   end
 
 end
