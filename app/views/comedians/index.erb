@@ -1,33 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AllYourDaveAreBelongToUs</title>
+    <link rel="stylesheet" href="stylesheets/main.css" title="text/css" />
+  </head>
 
-<section class="statistics">
-  <h1>Statistics</h1>
-  <ul>
-    <li><%= "Average Age #{@average_age.to_f.round(2)}" %></li>
-    <li><%= "Average Runtime #{@average_runtime.to_f.round(2)}" %></li>
-    <li><%= "Total Specials: #{@specials.count}"%></li>
-  </ul>
-  <ul>
-    <h3>Cities</h3>
-      <% @comedians.each do |comedian| %>
-        <li><%=comedian.city%></li>
-      <% end %>
-  </ul>
-  </section>
+<body>
+  <header class=statistics>
+    <h1>S  t  a  t  s</h1>
+      <statnums>
+          <p1><%= "Average Age #{@average_age.to_f.round(2)}" %></p1>
+          <p1><%= "Average Runtime #{@average_runtime.to_f.round(2)}" %></p1>
+          <p1><%= "Total Specials: #{@specials.count}"%></p1>
+      </statnums>
+
+      <statcity>
+        <ul>
+          <h3>Cities</h3>
+            <% @comedians.each do |comedian| %>
+              <li><%=comedian.city%></li>
+            <% end %>
+        </ul>
+      </statcity>
+  </header>
+
   <section>
-  <% @comedians.each do |comedian| %>
-    <ul id="comic-<%= comedian.id %>">
-      <li><%= comedian.name %></li>
-      <li>age - <%= comedian.age %></li>
-      <li>city - <%= comedian.city %></li>
-      <ul>
-        <a>Specials</a>
-        <% comedian.specials.each do |special| %>
-          <li> <%= special.name %> </li>
-          <img src=<%=special.img %> />
-          <li><%= special.runtime %> mins</li>
-          <% end %>
-          <li><%= "Total Specials: #{comedian.specials.count}"%></li>
+    <% @comedians.each do |comedian| %>
+    <ul class="comic" id="comic-<%= comedian.id %>">
+        <li><a id="name"><%= comedian.name %></a></li>
+         <li>Age: - <%= comedian.age %></li>
+         <li>City: - <%= comedian.city %></li>
+           <li><h3>Specials</h3><li>
+           <% comedian.specials.each do |special| %>
+           <li> <%= special.name %> </li>
+           <li><img class="img-circle" src=<%=special.img%> /><li>
+           <li><%= "Total Runtime: #{special.runtime}" %> mins</li>
+           <% end %>
+           <li><%= "Total Specials: #{comedian.specials.count}"%></li>
       </ul>
-    </ul>
-  <% end %>
-</section>
+    <% end %>
+  </section>
+
+</body>
+
+</html>

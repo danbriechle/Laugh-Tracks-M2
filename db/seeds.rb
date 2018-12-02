@@ -19,8 +19,10 @@ ct = Comedian.create(name: "Chris Tucker", age: 47, city: "Anlanta")
 
 
 cf.specials.create(name: "Craig Furgeson's Comedy Special", runtime: 12, img: "image/dave.png")
+cf.specials.create(name: "Craig Furgeson's Other Comedy Special", runtime: 3, img: "image/dave.png")
 mb.specials.create(name: "Mike Birbiglia's Comedy Special", runtime: 25, img: "image/dave.png")
 is.specials.create(name: "Iliza Shelsinger's Comedy Special", runtime: 24, img: "image/dave.png")
+is.specials.create(name: "Iliza Shelsinger's Very Short Comedy Special", runtime: 1, img: "image/dave.png")
 rp.specials.create(name: "Russel Peters's Comedy Special", runtime: 14, img: "image/dave.png")
 aa.specials.create(name: "Aziz Anazari's Comedy Special", runtime: 9, img: "image/dave.png")
 jj.specials.create(name: "Jim Jefferies's Comedy Special", runtime: 6, img: "image/dave.png")

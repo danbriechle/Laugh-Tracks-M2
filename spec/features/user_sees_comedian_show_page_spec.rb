@@ -8,12 +8,12 @@ RSpec.describe 'Comedian Show Page' do
 
       within "#comic-#{ben.id}" do
         expect(page).to have_content(ben.name)
-        expect(page).to have_content("age - #{ben.age}")
+        expect(page).to have_content("Age: - #{ben.age}")
         expect(page).to have_content(ben.city)
       end
       within "#comic-#{dave.id}" do
         expect(page).to have_content(dave.name)
-        expect(page).to have_content("age - #{dave.age}")
+        expect(page).to have_content("Age: - #{dave.age}")
         expect(page).to have_content(dave.city)
       end
     end
